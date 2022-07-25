@@ -10,7 +10,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="bg-light">
-        <h1 className="text-center display-1 text-danger pt-3">MyNotes</h1>
+        <h1 className="text-center display-1 text-danger pt-2 pb-2 ">MyNotes</h1>
         <Main />
         <Footer />
       </div>

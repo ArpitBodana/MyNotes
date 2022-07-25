@@ -23,7 +23,7 @@ function TextInput(props: PropsType) {
     if (itext === "") {
       inputRef.current.focus();
       setInput(true);
-      setTimeout(() => setInput(false), 5000);
+      setTimeout(() => setInput(false), 10000);
     } else {
       setInput(false);
       props.addText(itext);
