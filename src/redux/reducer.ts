@@ -1,20 +1,22 @@
 import { ADD_TEXT, RESET, textAction, textState } from "./types"
-
+const data = localStorage.getItem('myNotes');
 const initialState = {
-    text: []
+    text: data ? JSON.parse(data) : [],
 }
 
 const textReducer = (state: textState = initialState, action: textAction) => {
     switch (action.type) {
         case ADD_TEXT:
+            localStorage.setItem('myNotes', JSON.stringify(data))
             return {
                 ...state,
-                text:[...state.text,action.payload+'\n']
+                text: [...state.text, action.payload + '\n']
             }
         case RESET:
-            return{
+            localStorage.removeItem('myNotes');
+            return {
                 ...state,
-                text:[]
+                text: []
             }
         default:
             return state
