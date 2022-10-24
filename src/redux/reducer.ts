@@ -1,3 +1,4 @@
+import { text } from "stream/consumers";
 import { ADD_TEXT, RESET, textAction, textState } from "./types"
 const data = localStorage.getItem('myNotes');
 const initialState = {
@@ -7,10 +8,12 @@ const initialState = {
 const textReducer = (state: textState = initialState, action: textAction) => {
     switch (action.type) {
         case ADD_TEXT:
-            localStorage.setItem('myNotes', JSON.stringify(data))
+            const myData = [...state.text, action.payload]
+            localStorage.setItem('myNotes', JSON.stringify(myData))
             return {
                 ...state,
-                text: [...state.text, action.payload + '\n']
+                text: [...state.text, action.payload + '\n'],
+
             }
         case RESET:
             localStorage.removeItem('myNotes');
